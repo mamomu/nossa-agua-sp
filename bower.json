@@ -1,0 +1,22 @@
+{
+  "name": "NossaAgua",
+  "version": "1.0.0",
+  "authors": [
+    "Matheus Murbach <matheus@matheus.co>"
+  ],
+  "description": "Aplicativo que monitora os níveis das represas que abastecem o município de São Paulo e alguns da Grande São Paulo.",
+  "license": "MIT",
+  "homepage": "http://github.com/mamomu/nossa-agua",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.23",
+    "jquery": "~2.1.1"
+  }
+}
