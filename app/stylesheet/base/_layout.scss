@@ -1,0 +1,214 @@
+body, html {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/bg-lines.png") #0a1e23;
+  background-repeat: repeat;
+  overflow: hidden !important;
+}
+
+.main {
+  overflow: hidden;
+}
+
+@-webkit-keyframes waterAnima {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 0 10px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@-moz-keyframes waterAnima {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 0 10px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@-o-keyframes waterAnima {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 0 10px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@keyframes waterAnima {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 0 10px;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.water {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  height: 3000px;
+  background: url('../assets/bg-water.png') no-repeat;
+  background-size: 100%;
+  @include single-transition(all, 2s, linear);
+  @include animationLoop(0, 2s, waterAnima, linear);
+}
+
+.ruler {
+  position: absolute;
+  height: 81%;
+  width: 30px;
+  top: 120px;
+  left: 40px;
+  background: url('../assets/ruler.png');
+  background-size: cover;
+}
+
+.instructions {
+  z-index: 9;
+  width: 70%;
+  margin-top: 120px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  @include single-transition(all, 1s, linear);
+  &.show {
+    margin-top: 140px;
+    opacity: 1;
+  }
+  h3 {
+    @include font-thin;
+    font-size: 35px;
+  }
+}
+
+@include bp(540, 320) {
+  .ruler {
+    position: absolute;
+    height: 81%;
+    width: 30px;
+    top: 70px;
+    left: 20px;
+    background: url('../assets/ruler.png');
+    background-size: cover;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 9;
+  width: 70%;
+  margin: 0 auto;
+  color: #fff;
+  display: none;
+  text-align: center;
+  &.show {
+    display: block;
+  }
+  h3 {
+    margin-left: -70px;
+    @include font-thin;
+    font-size: 35px;
+  }
+  h2 {
+    margin-top: -10px;
+    @include font-bold;
+    font-size: 55px;
+  }
+  .indicator {
+    @include animationLoop(2.5s, 2s, waterAnima, linear);
+    position: relative;
+    width: 397px;
+    height: 460px;
+    margin: 0 auto;
+    background: url('../assets/indicator.png') no-repeat;
+    text-align: center;
+    z-index: 5;
+    .pct {
+      position: relative;
+      top: 140px;
+      @include font-bold;
+      font-size: 150px;
+      letter-spacing: -12px;
+      strong {
+        @include font-bold;
+        font-size: 80px;
+      }
+    }
+  }
+}
+
+@include bp(540, 320) { 
+  .content {
+    position: relative;
+    z-index: 9;
+    width: 70%;
+    top: -80px;
+    margin: 0 auto;
+    color: #fff;
+    display: none;
+    text-align: center;
+    &.show {
+      display: block;
+    }
+    h3 {
+      margin-left: -70px;
+      @include font-thin;
+      font-size: 25px;
+    }
+    h2 {
+      margin-top: 0px;
+      @include font-bold;
+      font-size: 34px;
+    }
+    .indicator {
+      @include animationLoop(2.5s, 2s, waterAnima, linear);
+      position: relative;
+      width: 250px;
+      height: 278px;
+      margin: 0 auto;
+      background: url('../assets/indicator.png') no-repeat;
+      background-size: 100%;
+      text-align: center;
+      z-index: 5;
+      .pct {
+        position: relative;
+        top: 80px;
+        @include font-bold;
+        font-size: 80px;
+        letter-spacing: -12px;
+        strong {
+          @include font-bold;
+          font-size: 50px;
+        }
+      }
+    }
+  }
+}
+.footer {
+  position: absolute;
+  @include font-default;
+  font-size: 11px;
+  color: #fff;
+  bottom: 30px;
+  right: 30px;
+  img {
+    margin-left: 10px;
+    position: relative;
+    top: 13px;
+    width: 25px;
+  }
+}

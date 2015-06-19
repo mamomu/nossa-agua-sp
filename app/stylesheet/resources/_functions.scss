@@ -1,0 +1,221 @@
+// Font-size
+@mixin font-thin {
+  font: {
+    family: 'Gotham', sans-serif;
+    weight: 100;
+    style: normal;
+  }
+}
+
+@mixin font-light {
+  font: {
+    family: 'Gotham', sans-serif;
+    weight: 200;
+    style: normal;
+  }
+}
+
+@mixin font-default {
+  font: {
+    family: 'Gotham', sans-serif;
+    weight: 400;
+    style: normal;
+  }
+}
+
+@mixin font-bold {
+  font: {
+    family: 'Gotham', sans-serif;
+    weight: 700;
+    style: normal;
+  }
+}
+
+@mixin bp($max, $min:0) {
+  @media screen and (min-width: $min#{px}) and (max-width: $max#{px}) {
+    @content;
+  }
+}
+
+@mixin fs($target) {
+  $rem: ($target / 16);
+  font-size: #{$target}px;
+  font-size: #{$rem}rem;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content;}
+  &:-moz-placeholder           {@content;}
+  &::-moz-placeholder          {@content;}
+  &:-ms-input-placeholder      {@content;}  
+}
+
+/*
+Example usage: 
+@include floating()
+or
+@include floating(){
+  ....
+};
+*/
+@mixin floating (){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @content;
+}
+
+
+@function _($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}
+
+@function __($target, $context) {
+  @return ($target / $context) * 100%;
+}
+@mixin respond-landscape(){
+  @media only screen and (max-width: $medium-device) and (orientation : landscape) { @content; }
+}
+@mixin respond-to($media) {
+  @if $media == $small-device {
+    @media only screen and (max-width: $small-device) { @content; }
+  }
+  @else if $media == $medium-device {
+    @media only screen and (max-width: $medium-device) { @content; }
+  }
+  @else if $media == $large-device {
+    @media only screen and (min-width: $large-device) { @content; }
+  }
+}
+
+
+@mixin keyframes( $animationName )
+{
+    @-webkit-keyframes $animationName {
+        @content;
+    }
+    @-moz-keyframes $animationName {
+        @content;
+    }
+    @-o-keyframes $animationName {
+        @content;
+    }
+    @keyframes $animationName {
+        @content;
+    }
+}
+
+/*
+Example usage: 
+@include animation(10s, 5s, changecolour)
+*/
+@mixin animationLoop ($delay, $duration, $keyframe, $ease) {
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: $keyframe;
+  -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+  -webkit-animation-timing-function:$ease  ;
+  // -webkit-animation-play-state:$paused; /* Safari and Chrome */
+  -webkit-animation-iteration-count:infinite; /*Safari and Chrome*/
+
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-name: $keyframe;
+  -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+  -moz-animation-timing-function:$ease;
+  // -moz-animation-play-state:$paused; /* Safari and Chrome */
+  -moz-animation-iteration-count:infinite;
+  
+
+  -o-animation-delay: $delay;
+  -o-animation-duration: $duration;
+  -o-animation-name: $keyframe;
+  -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+  -o-animation-timing-function:$ease;
+  // -o-animation-play-state:$paused; /* Safari and Chrome */
+  -o-animation-iteration-count:infinite;
+
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $keyframe;
+  animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+  animation-timing-function:$ease;
+  // animation-play-state:$paused;
+   animation-iteration-count:infinite;
+}
+
+
+@mixin animation-reverse ($delay, $duration, $keyframe, $ease) {
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: $keyframe;
+  -webkit-animation-fill-mode: both; /* this prevents the animation from restarting! */
+  -webkit-animation-timing-function:$ease  ;
+  -webkit-animation-direction: reverse;
+  
+  // -webkit-animation-play-state:$paused; /* Safari and Chrome */
+  // -webkit-animation-iteration-count:infinite; /*Safari and Chrome*/
+
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-name: $keyframe;
+  -moz-animation-fill-mode: both; /* this prevents the animation from restarting! */
+  -moz-animation-timing-function:$ease;
+  -moz-animation-direction: reverse;
+  // -moz-animation-play-state:$paused; /* Safari and Chrome */
+  // -moz-animation-iteration-count:infinite;
+  
+
+  -o-animation-delay: $delay;
+  -o-animation-duration: $duration;
+  -o-animation-name: $keyframe;
+  -o-animation-fill-mode: both; /* this prevents the animation from restarting! */
+  -o-animation-timing-function:$ease;
+  -o-animation-direction: reverse;
+  // -o-animation-play-state:$paused; /* Safari and Chrome */
+  // -o-animation-iteration-count:infinite;
+
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $keyframe;
+  animation-fill-mode: both; /* this prevents the animation from restarting! */
+  animation-timing-function:$ease;
+  animation-direction: reverse;
+  // animation-play-state:$paused;
+   // animation-iteration-count:infinite;
+}
+
+@mixin animation ($delay, $duration, $keyframe, $ease) {
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: $keyframe;
+  -webkit-animation-fill-mode: both; /* this prevents the animation from restarting! */
+  -webkit-animation-timing-function:$ease  ;
+  // -webkit-animation-play-state:$paused; /* Safari and Chrome */
+  // -webkit-animation-iteration-count:infinite; /*Safari and Chrome*/
+
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-name: $keyframe;
+  -moz-animation-fill-mode: both; /* this prevents the animation from restarting! */
+  -moz-animation-timing-function:$ease;
+  // -moz-animation-play-state:$paused; /* Safari and Chrome */
+  // -moz-animation-iteration-count:infinite;
+  
+
+  -o-animation-delay: $delay;
+  -o-animation-duration: $duration;
+  -o-animation-name: $keyframe;
+  -o-animation-fill-mode: both; /* this prevents the animation from restarting! */
+  -o-animation-timing-function:$ease;
+  // -o-animation-play-state:$paused; /* Safari and Chrome */
+  // -o-animation-iteration-count:infinite;
+
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $keyframe;
+  animation-fill-mode: both; /* this prevents the animation from restarting! */
+  animation-timing-function:$ease;
+  // animation-play-state:$paused;
+   // animation-iteration-count:infinite;
+}

@@ -1,0 +1,67 @@
+.icon {
+  font-size: 12px !important;
+  @include font-thin;
+  clear: both;
+  display: block;
+  &.rain {
+    position: relative;
+    top: 150px;
+    margin: 0 auto;
+    width: 90px;
+    height: 40px;
+    background: url('../assets/rain-icon.png') no-repeat;
+    background-size: 50%;
+    text-indent: 50px;
+    padding-top: 13px;
+    text-align: right;
+  }
+  &.share {
+    position: relative;
+    top: 220px;
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    &.facebook {
+      background: #15347b;
+      &:hover {
+        background: #12295e;
+      }
+    }
+    &.twitter {
+      background: #0ac6f9;
+      &:hover {
+        background: #0da1c9;
+      }
+    }
+  }
+}
+
+@include bp(540, 320) {
+  .icon {
+    &.rain {
+      top: 80px;
+    }
+    &.share {
+      top: 130px;
+      left: -5px;
+    }
+  }
+  .menu-icon {
+    display: block !important;
+    width: 20px;
+    height: 20px;
+    background: url('../assets/icon-menu.png');
+    background-size: cover;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    top: 20px;
+  }
+}
+.menu-icon {
+  display: none;
+}

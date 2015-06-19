@@ -1,0 +1,66 @@
+%extend_1 {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+
+
+#preload {
+  background: #0a1e23;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: table;
+}
+.preload {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  img {
+    width: 200px;
+    margin: 0 auto;
+  }
+}
+.loader {
+  margin: 3em auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(255, 255, 255, 0);
+  border-right: 1.1em solid rgba(255, 255, 255, 0);
+  border-bottom: 1.1em solid rgba(255, 255, 255, 0);
+  border-left: 1.1em solid #3498db;
+  @include animationLoop(0, 2s, load, linear);
+  @extend %extend_1;
+  &:after {
+    @extend %extend_1;
+  }
+}
+@-webkit-keyframes load {
+  0% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: rotate(0deg);
+  }
+  100% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: rotate(360deg);
+  }
+}
+@keyframes load {
+  0% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: rotate(0deg);
+  }
+  100% {
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: rotate(360deg);
+  }
+}
